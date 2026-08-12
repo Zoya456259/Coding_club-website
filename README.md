@@ -31,34 +31,40 @@ This started as a way to give a coding club an actual online presence — somewh
 
 # Project Structure
 
+## Project Structure
+
+```text
 project/
-├── index.php               # Home page
-├── program.php              # Program page
-├── events.php                # Events page + registration form
-├── about.php                  # About page + membership signup form
-├── contact.php                 # Contact page
-├── conn.php                     # DB connection
-├── membership_db.php            # Handles membership submissions
-├── registration_db.php          # Handles event registration submissions
-├── contact_db.php               # Handles contact submissions
-├── listMembers.php              # Admin: view members
-├── editMember.php               # Admin: edit a member
-├── deleteMember.php             # Admin: delete a member
-├── listRegistration.php         # Admin: view registrations
-├── editRegistration.php         # Admin: edit a registration
-├── deleteRegistration.php       # Admin: delete a registration
-├── listContact.php              # Admin: view contact messages
-├── deleteContact.php            # Admin: delete a message
-├── project.sql                  # DB export — import this to set up tables
+│
+├── index.php
+├── about.php
+├── program.php
+├── events.php
+├── contact.php
+│
 ├── css/
 │   └── style.css
+│
 ├── javascript/
-│   ├── javascript.js            # Custom JS (accordion, slider, validation)
+│   ├── javascript.js
 │   └── jquery.js
+│
+├── images/
+│   └── Website images
+│
 ├── jquery-ui-1.14.1.custom/
-└── images/
-```
-
+│   ├── jquery-ui.css
+│   ├── jquery-ui.js
+│   └── ...
+│
+├── upload/
+│
+├── conn.php
+├── membership_db.php
+├── registration_db.php
+├── contact_db.php
+├── project.sql
+└── .gitignore
 #How It's Wired Together
 All the public pages share the same header and footer so the layout stays consistent across the site. On the About page, the membership form collects a name, email, year/program, skills, and a resume, and `membership_db.php` takes that data and saves it to the `members` table (the resume itself goes into an `uploads/` folder). The Events page works the same way for event registrations, saving into the `event_registration` table through `registration_db.php`. The Contact form is validated on the client side with jQuery, then handled by `contact_db.php`, which stores everything in the `contact` table. `conn.php` is what actually opens the connection to the `project` database using `mysqli_connect()`. From there, the admin pages just pull from those same tables so submissions can be reviewed, edited, or removed.
 
